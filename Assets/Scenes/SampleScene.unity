@@ -241,6 +241,52 @@ MonoBehaviour:
   dmgMeleeMax: 10
   dmgRangedMin: 0
   dmgRangedMax: 0
+  speed: 3
+--- !u!1 &139914263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139914265}
+  - component: {fileID: 139914264}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &139914264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139914263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e53a10ce8c0b24b929e869d09b1305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentUnit: {fileID: 89734728}
+--- !u!4 &139914265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139914263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &364543551
 GameObject:
   m_ObjectHideFlags: 0
@@ -29896,6 +29942,7 @@ MonoBehaviour:
   dmgMeleeMax: 0
   dmgRangedMin: 0
   dmgRangedMax: 0
+  speed: 2
 --- !u!136 &1597082118
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30037,4 +30084,3 @@ MonoBehaviour:
   interactiveMap: {fileID: 364543554}
   defaultTile: {fileID: 11400000, guid: 3e6ef0fee6f80e4439c1423493d97dfa, type: 2}
   hoverTile: {fileID: 11400000, guid: b00378b92cbfec244b33510d0eff6377, type: 2}
-  currentHoverTile: {fileID: 0}

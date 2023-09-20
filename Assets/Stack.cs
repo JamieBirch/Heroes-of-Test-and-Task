@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Stack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Unit unit;
+    private int unitCount;
+    private int topUnitHealth;
+    private Player owner;
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        Debug.Log("hover " + unit + "count " + unitCount);
     }
 }

@@ -15,14 +15,21 @@ public class Knight : Unit
     void Start()
     {
         // Debug.Log("this: " + this.health);
-        Debug.Log("health: " + health);
-        Debug.Log("movement: " + movement);
-        Debug.Log("initiative: " + initiative);
+        // Debug.Log("health: " + health);
+        // Debug.Log("movement: " + movement);
+        // Debug.Log("initiative: " + initiative);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position != target)
+        {
+            Move(target);
+        }
+        else
+        {
+            targetSet = false;
+        }
     }
 }
