@@ -19,6 +19,7 @@ public class Stack : MonoBehaviour
     public Text count;
     
     public GameObject turnCube;
+    public Renderer turnCubeRenderer;
     
     // public bool isActive;
     
@@ -45,6 +46,7 @@ public class Stack : MonoBehaviour
         
         _battleManager = BattleManager.instance;
         _gridController = GridController.instance;
+        _gameManager = GameManager.instance;
 
         AssignOccupiedTile();
 
@@ -71,8 +73,9 @@ public class Stack : MonoBehaviour
         {
             Owner = PlayersManager.instance.GetRightPlayer();
         }
-        
-        
+
+        Owner.addStack();
+        turnCubeRenderer.material = Owner.HighlightMaterial;
     }
 
     void Update()
@@ -172,11 +175,18 @@ public class Stack : MonoBehaviour
         //TODO
         Debug.Log("destroyed");
 
-        int playersStackCount = Owner.substractStack();
-        if (playersStackCount == 0)
+        if (Owner.GetStacksAlive() == 1)
         {
             _gameManager.GameOver();
         }
+        else
+        {
+            Owner.substractStack();
+        }
+        
+
+        _battleManager.RemoveFromStacks(this);
+        Destroy(gameObject);
     }
 
     public void ResetTurnActions()

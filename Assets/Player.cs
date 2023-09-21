@@ -20,6 +20,11 @@ public class Player
         return _stacksAlive--;
     }
     
+    public void addStack()
+    {
+        _stacksAlive++;
+    }
+    
     public void setStacks(int count)
     {
         _stacksAlive = count;
