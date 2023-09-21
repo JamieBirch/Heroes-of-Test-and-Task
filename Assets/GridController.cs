@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 
 public class GridController : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    // [SerializeField] private Camera camera;
     public static GridController instance;
     
     private Grid grid;
@@ -91,7 +91,7 @@ public class GridController : MonoBehaviour
 
     Vector3Int GetMousePosition ()
     {
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
             Vector3Int position = Vector3Int.FloorToInt(raycastHit.point);

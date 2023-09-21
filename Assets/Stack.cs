@@ -1,15 +1,27 @@
-using System;
 using UnityEngine;
 
 public class Stack : MonoBehaviour
 {
-    private Unit unit;
-    private int unitCount;
+    public Unit unit;
+    public int unitCount;
     private int topUnitHealth;
     private Player owner;
+    public Canvas info;
 
-    private void OnMouseDown()
+    private void OnMouseEnter()
     {
-        Debug.Log("hover " + unit + "count " + unitCount);
+        info.enabled = true;
+    }
+    
+    private void OnMouseExit()
+    {
+        info.enabled = false;
+    }
+
+    //TODO rename method
+    public void Go()
+    {
+        Debug.Log("go " + unit + "count " + unitCount);
+        //TODO
     }
 }

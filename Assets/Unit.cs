@@ -15,6 +15,18 @@ public class Unit : MonoBehaviour
     public Vector3 target;
     public bool targetSet;
 
+    void Update()
+    {
+        if (transform.position != target)
+        {
+            Move(target);
+        }
+        else
+        {
+            targetSet = false;
+        }
+    }
+    
     public virtual void Attack()
     {
         Debug.Log("Attack");
