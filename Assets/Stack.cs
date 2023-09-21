@@ -125,12 +125,12 @@ public class Stack : MonoBehaviour
 
     public void SetMoveTarget(Vector3 cellCenter)
     {
+        
+        
         //TODO
         // if (isOccupied)
         targetTile = new Vector3(cellCenter.x, transform.position.y, cellCenter.z);
         Vector3Int positionToCell = _gridController.PositionToCell(targetTile);
-
-        // Debug.Log(positionToCell);
 
         occupiedTile = positionToCell;
         targetSet = true;

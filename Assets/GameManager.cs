@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 
     public Canvas GameOverCanvas;
     public Text GameOverText;
-    
-    public bool gameOver = false;
 
     private BattleManager _battleManager;
     
@@ -25,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        gameOver = true;
         GameOverText.text = _battleManager.GetActiveStack().Owner.Name + " won!";
         GameOverCanvas.gameObject.SetActive(true);
     }

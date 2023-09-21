@@ -56,17 +56,18 @@ public class GridController : MonoBehaviour
 
         if (!worldToCell.Equals(previousMousePos))
         {
-            highlight(worldToCell);
+            Highlight(worldToCell);
             interactiveMap.SetTile(previousMousePos, defaultTile);
             previousMousePos = worldToCell;
         }
 
         if (Input.GetMouseButton(0))
         {
-            if (isInDistance(previousMousePos))
+            Stack activeStack = _battleManager.GetActiveStack();
+            if (WithinReach(previousMousePos, activeStack.GetTile(), activeStack.unit.movement) && !activeStack.targetSet)
             {
                 Vector3 cellCenter = grid.GetCellCenterWorld(previousMousePos);
-                _battleManager.GetActiveStack().SetMoveTarget(cellCenter);
+                activeStack.SetMoveTarget(cellCenter);
             }
             else
             {
@@ -83,13 +84,13 @@ public class GridController : MonoBehaviour
         return worldToCell;
     }
 
-    private void highlight(Vector3Int worldToCell)
+    private void Highlight(Vector3Int worldToCell)
     {
         // Debug.Log(worldToCell);
         Stack activeStack = _battleManager.GetActiveStack();
         int unitMovement = activeStack.unit.movement;
         Vector3Int tile = activeStack.GetTile();
-        if (withinReach(worldToCell, tile, unitMovement))
+        if (WithinReach(worldToCell, tile, unitMovement))
         {
             interactiveMap.SetTile(worldToCell, availableTile);
         }
@@ -99,12 +100,12 @@ public class GridController : MonoBehaviour
         }
     }
 
-    private bool withinReach(Vector3Int tile1, Vector3Int tile2, int unitMovement)
+    private static bool WithinReach(Vector3Int tile1, Vector3Int tile2, int unitMovement)
     {
         return Utils.WithinDistance(tile1, tile2, unitMovement + 1);
     }
 
-    public void highlightInDistanceTiles(Unit unit)
+    /*public void highlightInDistanceTiles(Unit unit)
     {
         Vector3 unitPosition = unit.transform.position;
         int unitMovement = unit.movement;
@@ -123,7 +124,7 @@ public class GridController : MonoBehaviour
             }
             // Vector3Int worldToCell = grid.WorldToCell(position);
         }
-    }
+    }*/
 
     private bool isInDistance(Vector3Int vector3Int)
     {
@@ -134,7 +135,7 @@ public class GridController : MonoBehaviour
         return true;
     }
 
-    Vector3 GetMousePosition ()
+    /*Vector3 GetMousePosition ()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
@@ -143,7 +144,7 @@ public class GridController : MonoBehaviour
         }
         //TODO
         return new Vector3Int(0, 0, 0);
-    }
+    }*/
     
     
 }
