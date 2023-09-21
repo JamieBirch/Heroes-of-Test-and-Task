@@ -104,12 +104,22 @@ public class Stack : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Debug.Log("pressed on " + unit + "count " + unitCount);
-        
         Stack activeStack = _battleManager.GetActiveStack();
 
         if (this == activeStack) 
             return;
+
+        if (Owner == activeStack.Owner)
+        {
+            Debug.Log("You can't attack your units");
+            return;
+        }
+
+        if (activeStack._attackedOrUsedAbilityThisTurn)
+        {
+            Debug.Log("You have spent your action this turn");
+            return;
+        }
 
         StartCoroutine(activeStack.Attack(this));
     }
@@ -125,7 +135,8 @@ public class Stack : MonoBehaviour
 
     public void SetMoveTarget(Vector3 cellCenter)
     {
-        
+        if (_movedThisTurn)
+            return;
         
         //TODO
         // if (isOccupied)
@@ -139,7 +150,7 @@ public class Stack : MonoBehaviour
 
     public IEnumerator Attack(Stack targetStack)
     {
-        Debug.Log("attack an enemy");
+        // Debug.Log("attack an enemy");
         //Damage
 
         int damage = unit.Attack(targetStack);
@@ -200,5 +211,10 @@ public class Stack : MonoBehaviour
     public Vector3Int GetTile()
     {
         return occupiedTile;
+    }
+
+    public bool CanMove()
+    {
+        return !_movedThisTurn;
     }
 }

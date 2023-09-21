@@ -90,7 +90,7 @@ public class GridController : MonoBehaviour
         Stack activeStack = _battleManager.GetActiveStack();
         int unitMovement = activeStack.unit.movement;
         Vector3Int tile = activeStack.GetTile();
-        if (WithinReach(worldToCell, tile, unitMovement))
+        if (WithinReach(worldToCell, tile, unitMovement) && activeStack.CanMove())
         {
             interactiveMap.SetTile(worldToCell, availableTile);
         }

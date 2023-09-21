@@ -40,6 +40,7 @@ public class BattleManager : MonoBehaviour
     {
         activeStack = linkedListNode;
         activeStack.Value.turnCube.SetActive(true);
+        activeStack.Value.ResetTurnActions();
     }
 
     private void SwitchToNextStack()
@@ -64,6 +65,7 @@ public class BattleManager : MonoBehaviour
     
     public void EndTurn()
     {
+        
         activeStack.Value.turnCube.SetActive(false);
         SwitchToNextStack();
     }
