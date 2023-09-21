@@ -1,23 +1,24 @@
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance;
     
-    public Stack friend;
-    public Stack enemy;
+    private LinkedList<Stack> allStacksOrdered;
+    private int currentRound;
 
-    private Stack activeStack;
+    private LinkedListNode<Stack> activeStack;
 
     public Stack GetActiveStack()
     {
-        return activeStack;
+        return activeStack.Value;
     }
 
     private void Update()
     {
-        activeStack.Move();
+        activeStack.Value.Move();
     }
 
     private void Awake()
@@ -27,52 +28,40 @@ public class BattleManager : MonoBehaviour
     
     private void Start()
     {
-        activeStack = friend;
-        // StartCoroutine(PlayerTurn());
-        StartCoroutine(StartBattle());
+        currentRound = 1;
+        allStacksOrdered = OrderStacksByInitiative();
+        activeStack = allStacksOrdered.First;
+        activeStack.Value.turnCube.SetActive(true);
     }
 
-    private IEnumerator StartBattle()
+    private void SwitchToNextStack()
     {
-        yield return new WaitForSeconds(2f);
-        PlayerTurn();
-    }
-
-    private IEnumerator PlayerTurn()
-    {
-        //TODO
-        // Debug.Log("Attack");
-
-        // Attack(enemy);
-        yield return new WaitForSeconds(2f);
-    }
-
-    public void Attack(Stack targetStack)
-    {
-        StartCoroutine(activeStack.Attack(targetStack));
-    }
-
-    private IEnumerator WaitFor(float time)
-    {
-        yield return new WaitForSeconds(time);
-    }
-
-    private void SwitchActiveStack()
-    {
-        if (activeStack == friend)
+        if (activeStack.Next != null)
         {
-            activeStack = enemy;
+            activeStack = activeStack.Next;
         }
         else
         {
-            activeStack = friend;
+            activeStack = allStacksOrdered.First;
         }
+        
+        activeStack.Value.turnCube.SetActive(true);
     }
     
     public void EndTurn()
     {
-        activeStack.isActive = false;
-        Debug.Log(activeStack.unit + "count " + activeStack.unitCount + " finished its turn");
-        SwitchActiveStack();
+        activeStack.Value.turnCube.SetActive(false);
+        SwitchToNextStack();
+    }
+    
+    private LinkedList<Stack> OrderStacksByInitiative()
+    {
+        GameObject[] allStacks = GameObject.FindGameObjectsWithTag(Utils.UNIT_TAG);
+        
+        IOrderedEnumerable<Stack> stacksOrdered = allStacks
+            .Select(stack => stack.GetComponent<Stack>())
+            .OrderByDescending(stack => stack.unit.initiative);
+        
+        return new LinkedList<Stack>(stacksOrdered);
     }
 }

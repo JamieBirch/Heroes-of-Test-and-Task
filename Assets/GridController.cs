@@ -40,7 +40,7 @@ public class GridController : MonoBehaviour
         Vector3Int worldToCell;
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit) && !raycastHit.transform.CompareTag("Unit"))
+        if (Physics.Raycast(ray, out RaycastHit raycastHit) && !raycastHit.transform.CompareTag(Utils.UNIT_TAG))
         {
             worldToCell = PositionToCell(raycastHit.point);
             // return raycastHit.point;

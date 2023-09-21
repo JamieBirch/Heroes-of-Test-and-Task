@@ -16,7 +16,9 @@ public class Stack : MonoBehaviour
     public Text initiative;
     public Text count;
     
-    public bool isActive;
+    public GameObject turnCube;
+    
+    // public bool isActive;
     
     public Vector3 targetTile;
     public bool targetSet;
@@ -84,21 +86,10 @@ public class Stack : MonoBehaviour
         StartCoroutine(activeStack.Attack(this));
     }
 
-    public IEnumerator DoTurn()
-    {
-        Debug.Log("go " + unit + "count " + unitCount);
-        yield return new WaitUntil(() => !isActive);
-        //TODO
-        // yield return null;
-    }
-    
     public void Move()
     {
         if (targetSet)
         {
-            // Debug.Log(transform.position);
-            // Debug.Log("move to tile " + targetPosition);
-   
             float distanceThisFrame = unit.speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetTile, distanceThisFrame);
         }
@@ -124,10 +115,11 @@ public class Stack : MonoBehaviour
         //Damage
 
         int damage = unit.Attack(targetStack);
-        Debug.Log(damage + " damage");
         if (damage > 0)
         {
-            targetStack.TakeDamage(damage * unitCount);
+            int totalDamage = damage * unitCount;
+            Debug.Log("total damage: " + totalDamage);
+            targetStack.TakeDamage(totalDamage);
             _attackedOrUsedAbilityThisTurn = true;
         }
         yield return new WaitForSeconds(2f);

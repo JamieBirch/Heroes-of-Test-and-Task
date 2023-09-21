@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     public Player leftPlayer;
     public Player rightPlayer;
 
-    public List<Stack> allStacksOrdered;
+    // public List<Stack> allStacksOrdered;
     public Unit currentUnit = null;
     public Stack currentStack = null;
-    public string unitTag = "unit";
-    public int currentRound;
+    public string unitTag;
+    // public int currentRound;
     public bool gameOver = false;
     public bool endRound = false;
     public bool endTurn = false;
@@ -26,17 +26,17 @@ public class GameManager : MonoBehaviour
     
     void Start() {
         _gridController = GridController.instance;
-        StartGame();
+        // StartGame();
         // _gridController.highlightInDistanceTiles(currentUnit);
     }
 
-    private void StartGame()
+    /*private void StartGame()
     {
         currentRound = 1;
         allStacksOrdered = OrderStacksByInitiative();
-    }
+    }*/
 
-    private void NextRound()
+    /*private void NextRound()
     {
         foreach (Stack currentStack in allStacksOrdered)
         {
@@ -48,9 +48,9 @@ public class GameManager : MonoBehaviour
 
         endRound = true;
         currentRound++;
-    }
+    }*/
 
-    private List<Stack> OrderStacksByInitiative()
+    /*private List<Stack> OrderStacksByInitiative()
     {
         // List<GameObject> allStacks = GameObject.FindGameObjectsWithTag(unitTag).ToList();
         GameObject[] allStacks = GameObject.FindGameObjectsWithTag(unitTag);
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             .ToList();
         // Debug.Log("2");
         return stacksOrdered;
-    }
+    }*/
 
 
     

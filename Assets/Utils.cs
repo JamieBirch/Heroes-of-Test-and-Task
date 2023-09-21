@@ -3,6 +3,8 @@ using Random = System.Random;
 
 public static class Utils
 {
+    public const string UNIT_TAG = "Unit";
+
     public static int RandomIntBetween(int min, int max)
     {
         Random random = new Random();
