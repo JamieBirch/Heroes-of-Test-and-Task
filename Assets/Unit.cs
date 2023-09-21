@@ -5,7 +5,7 @@ public class Unit : MonoBehaviour
     public int health;
     public int movement;
     public int initiative;
-    
+
     public int dmgMeleeMin;
     public int dmgMeleeMax;
     public int dmgRangedMin;

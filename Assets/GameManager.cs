@@ -36,15 +36,6 @@ public class GameManager : MonoBehaviour
         allStacksOrdered = OrderStacksByInitiative();
     }
 
-    void Update()
-    {
-        /*if (!gameOver && endRound)
-        {
-            Debug.Log("0");
-            NextRound();
-        }*/
-    }
-
     private void NextRound()
     {
         foreach (Stack currentStack in allStacksOrdered)
@@ -78,12 +69,4 @@ public class GameManager : MonoBehaviour
         Debug.Log(currentStack.unit + "count " + currentStack.unitCount + " finished its turn");
     }
     
-    /*class StackComparer : IComparer
-    {
-        public int Compare(object x, object y)
-        {
-            int compareRes = ((Stack)x).unit.initiative.CompareTo(((Stack)y).unit.initiative);
-            return compareRes;
-        }
-    }*/
 }

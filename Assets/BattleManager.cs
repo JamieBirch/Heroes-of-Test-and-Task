@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -37,13 +36,13 @@ public class BattleManager : MonoBehaviour
         
         
         //TODO
-        Move();
+        
         yield return new WaitForSeconds(2f);
     }
 
-    public void Move()
+    public void Attack(Stack targetStack)
     {
-        // StartCoroutine(activeStack.Move(new Vector3(0,0,0)));
+        StartCoroutine(activeStack.Attack(targetStack));
     }
 
     private void SwitchActiveStack()

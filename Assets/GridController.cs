@@ -19,10 +19,11 @@ public class GridController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        grid = gameObject.GetComponent<Grid>();
     }
     
     void Start() {
-        grid = gameObject.GetComponent<Grid>();
+        
         // _gameManager = GameManager.instance;
         _battleManager = BattleManager.instance;
     }
@@ -34,9 +35,9 @@ public class GridController : MonoBehaviour
             return;
         }
         
-        Vector3Int mousePos = GetMousePosition();
+        Vector3 mousePos = GetMousePosition();
         // Debug.Log(mousePos);
-        Vector3Int worldToCell = grid.WorldToCell(mousePos);
+        Vector3Int worldToCell = PositionToCell(mousePos);
 
         if (!worldToCell.Equals(previousMousePos))
         {
@@ -59,6 +60,14 @@ public class GridController : MonoBehaviour
                 Debug.Log("too far");
             }
         }
+    }
+
+    public Vector3Int PositionToCell(Vector3 mousePos)
+    {
+        // Debug.Log(mousePos);
+        Vector3Int pos = Vector3Int.FloorToInt(mousePos);
+        Vector3Int worldToCell = grid.WorldToCell(pos);
+        return worldToCell;
     }
 
     private void highlight(Vector3Int worldToCell)
@@ -97,15 +106,16 @@ public class GridController : MonoBehaviour
         return true;
     }
 
-    Vector3Int GetMousePosition ()
+    Vector3 GetMousePosition ()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
-            Vector3Int position = Vector3Int.FloorToInt(raycastHit.point);
-            return position;
+            return raycastHit.point;
         }
         //TODO
         return new Vector3Int(0, 0, 0);
     }
+    
+    
 }
