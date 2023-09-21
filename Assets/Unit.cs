@@ -13,13 +13,20 @@ public class Unit : MonoBehaviour
 
     public int speed = 3;
     
-    public virtual void Attack()
+    public virtual int Attack(Stack targetStack)
     {
-        Debug.Log("Attack");
+        return 0;
+    }
+
+    public virtual void TakeDamage()
+    {
+        
     }
     
-    public virtual void Skip()
+    public bool IsClose(Stack targetStack)
     {
-        Debug.Log("Skip turn");
+        Vector3 myTile = GetComponent<Stack>().GetTile();
+        Vector3 enemyTile = targetStack.GetTile();
+        return Utils.WithinDistance(myTile, enemyTile, 2f);
     }
 }

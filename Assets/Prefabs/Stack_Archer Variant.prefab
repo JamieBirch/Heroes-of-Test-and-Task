@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6547507283430467125, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180551, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_Name
       value: Stack_Archer Variant
@@ -16,16 +20,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 6fc3902c12849da4eb8de9514aed012b, type: 2}
     - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+      propertyPath: unit
+      value: 
+      objectReference: {fileID: -4410177332356923275}
+    - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: 6fc3902c12849da4eb8de9514aed012b, type: 2}
+    - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+      propertyPath: unitCount
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -115,5 +127,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6547507284552180605, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+--- !u!1 &3254762407234765325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6547507284552180551, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+  m_PrefabInstance: {fileID: 8644191115660353866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4410177332356923275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254762407234765325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbeca85e55805e43af2c6bc200a5729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  movement: 6
+  initiative: 6
+  dmgMeleeMin: 1
+  dmgMeleeMax: 6
+  dmgRangedMin: 6
+  dmgRangedMax: 15
+  speed: 3

@@ -16,16 +16,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: b638f48ca6907ff4989f672d55b31e7f, type: 2}
     - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+      propertyPath: unit
+      value: 
+      objectReference: {fileID: 3371635356779876408}
+    - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: b638f48ca6907ff4989f672d55b31e7f, type: 2}
+    - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+      propertyPath: unitCount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -107,5 +115,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6547507284552180605, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+--- !u!1 &1301372615357017423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6547507284552180551, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+  m_PrefabInstance: {fileID: 5247270057046003208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3371635356779876408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301372615357017423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95184cfe8e1c8564382b3c2c0dc89767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  movement: 5
+  initiative: 4
+  dmgMeleeMin: 6
+  dmgMeleeMax: 10
+  dmgRangedMin: 0
+  dmgRangedMax: 0
+  speed: 3

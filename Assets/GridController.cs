@@ -35,9 +35,22 @@ public class GridController : MonoBehaviour
             return;
         }
         
-        Vector3 mousePos = GetMousePosition();
+        // Vector3 mousePos = GetMousePosition();
         // Debug.Log(mousePos);
-        Vector3Int worldToCell = PositionToCell(mousePos);
+        Vector3Int worldToCell;
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit) && !raycastHit.transform.CompareTag("Unit"))
+        {
+            worldToCell = PositionToCell(raycastHit.point);
+            // return raycastHit.point;
+        }
+        else
+        {
+            return;
+        }
+        
+        // Vector3Int worldToCell = PositionToCell(mousePos);
 
         if (!worldToCell.Equals(previousMousePos))
         {

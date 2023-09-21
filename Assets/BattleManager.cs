@@ -28,21 +28,33 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         activeStack = friend;
-        StartCoroutine(PlayerTurn());
+        // StartCoroutine(PlayerTurn());
+        StartCoroutine(StartBattle());
+    }
+
+    private IEnumerator StartBattle()
+    {
+        yield return new WaitForSeconds(2f);
+        PlayerTurn();
     }
 
     private IEnumerator PlayerTurn()
     {
-        
-        
         //TODO
-        
+        // Debug.Log("Attack");
+
+        Attack(enemy);
         yield return new WaitForSeconds(2f);
     }
 
     public void Attack(Stack targetStack)
     {
         StartCoroutine(activeStack.Attack(targetStack));
+    }
+
+    private IEnumerator WaitFor(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 
     private void SwitchActiveStack()

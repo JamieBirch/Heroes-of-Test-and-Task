@@ -27,9 +27,9 @@ public class Stack : MonoBehaviour
     private bool _attackedOrUsedAbilityThisTurn;
     private bool _movedThisTurn;
 
-    private Vector3 occupiedTile;
+    private Vector3Int occupiedTile;
 
-    private void Start()
+    void Start()
     {
         name.text = gameObject.name;
         health.text = unit.health.ToString();
@@ -42,7 +42,7 @@ public class Stack : MonoBehaviour
 
         Vector3 pos = new Vector3(transform.position.x, 0, transform.position.z);
         Vector3Int positionToCell = _gridController.PositionToCell(pos);
-        Debug.Log(positionToCell);
+        // Debug.Log(positionToCell);
         occupiedTile = positionToCell;
     }
 
@@ -74,12 +74,14 @@ public class Stack : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log("pressed on " + unit + "count " + unitCount);
+        
         Stack activeStack = _battleManager.GetActiveStack();
 
         if (this == activeStack) 
             return;
 
-        activeStack.Attack(this);
+        StartCoroutine(activeStack.Attack(this));
     }
 
     public IEnumerator DoTurn()
@@ -104,8 +106,14 @@ public class Stack : MonoBehaviour
 
     public void SetMoveTarget(Vector3 cellCenter)
     {
+        //TODO
+        // if (isOccupied)
         targetTile = new Vector3(cellCenter.x, transform.position.y, cellCenter.z);
-        occupiedTile = cellCenter;
+        Vector3Int positionToCell = _gridController.PositionToCell(targetTile);
+
+        Debug.Log(positionToCell);
+
+        occupiedTile = positionToCell;
         targetSet = true;
         _movedThisTurn = true;
     }
@@ -114,10 +122,11 @@ public class Stack : MonoBehaviour
     {
         Debug.Log("attack an enemy");
         //Damage
-        
-        
-        int damage = _calculateDamage();
-        targetStack.TakeDamage(damage);
+
+        int damage = unit.Attack(targetStack);
+        Debug.Log(damage + " damage");
+
+        targetStack.TakeDamage(damage * unitCount);
         _attackedOrUsedAbilityThisTurn = true;
         yield return new WaitForSeconds(2f);
     }
@@ -125,17 +134,17 @@ public class Stack : MonoBehaviour
     private void TakeDamage(int damage)
     {
         //TODO
+        Debug.Log("took " + damage + " damage");
     }
 
-    private int _calculateDamage()
-    {
-        //TODO
-        return 0;
-    }
-    
     public void ResetTurnActions()
     {
         _attackedOrUsedAbilityThisTurn = false;
         _movedThisTurn = false;
+    }
+
+    public Vector3 GetTile()
+    {
+        return occupiedTile;
     }
 }
