@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
 public class GridController : MonoBehaviour
@@ -26,6 +27,11 @@ public class GridController : MonoBehaviour
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+        
         Vector3Int mousePos = GetMousePosition();
         // Debug.Log(mousePos);
         Vector3Int worldToCell = grid.WorldToCell(mousePos);
@@ -82,10 +88,10 @@ public class GridController : MonoBehaviour
 
     private bool isInDistance(Vector3Int vector3Int)
     {
+        //TODO
         int currentUnitMovement = _gameManager.currentUnit.movement;
         Vector3 gridCellSize = grid.cellSize;
         // Debug.Log("cell size " + gridCellSize);
-        //TODO
         return true;
     }
 

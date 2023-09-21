@@ -1344,6 +1344,7 @@ MonoBehaviour:
   unit: {fileID: 6547507284552180605}
   unitCount: 0
   info: {fileID: 6547507283430467113}
+  count: {fileID: 7554589272265176157}
 --- !u!1 &6547507284981792356
 GameObject:
   m_ObjectHideFlags: 0

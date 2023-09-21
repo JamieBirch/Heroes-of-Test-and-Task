@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public List<Stack> allStacksOrdered;
     public Unit currentUnit = null;
+    public Stack currentStack = null;
     public string unitTag = "unit";
     public int currentRound;
     public bool gameOver = false;
@@ -50,8 +49,10 @@ public class GameManager : MonoBehaviour
     {
         foreach (Stack currentStack in allStacksOrdered)
         {
+            this.currentStack = currentStack;
             currentUnit = currentStack.unit;
-            currentStack.Go();
+            currentStack.isActive = true;
+            StartCoroutine(currentStack.Go());
         }
 
         endRound = true;
@@ -69,6 +70,12 @@ public class GameManager : MonoBehaviour
             .ToList();
         // Debug.Log("2");
         return stacksOrdered;
+    }
+
+    public void EndTurn()
+    {
+        currentStack.isActive = false;
+        Debug.Log(currentStack.unit + "count " + currentStack.unitCount + " finished its turn");
     }
     
     /*class StackComparer : IComparer

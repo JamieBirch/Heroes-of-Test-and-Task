@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Stack : MonoBehaviour
 {
@@ -7,6 +9,13 @@ public class Stack : MonoBehaviour
     private int topUnitHealth;
     private Player owner;
     public Canvas info;
+    public Text count;
+    public bool isActive;
+
+    void Update()
+    {
+        count.text = unitCount.ToString();
+    }
 
     private void OnMouseEnter()
     {
@@ -19,9 +28,11 @@ public class Stack : MonoBehaviour
     }
 
     //TODO rename method
-    public void Go()
+    public IEnumerator Go()
     {
         Debug.Log("go " + unit + "count " + unitCount);
+        yield return new WaitUntil(() => !isActive);
         //TODO
+        // yield return null;
     }
 }
