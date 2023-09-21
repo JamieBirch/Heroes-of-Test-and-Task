@@ -7,7 +7,9 @@ public class Stack : MonoBehaviour
     public Unit unit;
     public int unitCount;
     private int totalHealth;
-    private Player owner;
+    
+    public bool leftPlayer;
+    public Player Owner;
     
     public Canvas info;
     public Text name;
@@ -25,6 +27,7 @@ public class Stack : MonoBehaviour
     
     private BattleManager _battleManager;
     private GridController _gridController;
+    private GameManager _gameManager;
 
     private bool _attackedOrUsedAbilityThisTurn;
     private bool _movedThisTurn;
@@ -33,6 +36,7 @@ public class Stack : MonoBehaviour
 
     void Start()
     {
+        //UI
         name.text = gameObject.name;
         health.text = unit.health.ToString();
         movement.text = unit.movement.ToString();
@@ -42,12 +46,33 @@ public class Stack : MonoBehaviour
         _battleManager = BattleManager.instance;
         _gridController = GridController.instance;
 
-        Vector3 pos = new Vector3(transform.position.x, 0, transform.position.z);
-        Vector3Int positionToCell = _gridController.PositionToCell(pos);
-        // Debug.Log(positionToCell);
-        occupiedTile = positionToCell;
+        AssignOccupiedTile();
 
         totalHealth = unitCount * unit.health;
+
+        AssignPlayer();
+        //TODO assign turnCube material
+    }
+
+    private void AssignOccupiedTile()
+    {
+        Vector3 pos = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3Int positionToCell = _gridController.PositionToCell(pos);
+        occupiedTile = positionToCell;
+    }
+
+    private void AssignPlayer()
+    {
+        if (leftPlayer)
+        {
+            Owner = PlayersManager.instance.GetLeftPlayer();
+        }
+        else
+        {
+            Owner = PlayersManager.instance.GetRightPlayer();
+        }
+        
+        
     }
 
     void Update()
@@ -146,6 +171,12 @@ public class Stack : MonoBehaviour
     {
         //TODO
         Debug.Log("destroyed");
+
+        int playersStackCount = Owner.substractStack();
+        if (playersStackCount == 0)
+        {
+            _gameManager.GameOver();
+        }
     }
 
     public void ResetTurnActions()

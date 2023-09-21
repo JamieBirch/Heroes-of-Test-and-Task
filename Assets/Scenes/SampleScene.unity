@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 139914265}
   - component: {fileID: 139914264}
   - component: {fileID: 139914266}
+  - component: {fileID: 139914267}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -254,12 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e53a10ce8c0b24b929e869d09b1305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentUnit: {fileID: 0}
-  currentStack: {fileID: 0}
-  unitTag: Unit
+  GameOverCanvas: {fileID: 0}
   gameOver: 0
-  endRound: 1
-  endTurn: 0
 --- !u!4 &139914265
 Transform:
   m_ObjectHideFlags: 0
@@ -287,6 +284,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b93ea7af8e9fdd4c8473690fd0b3199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &139914267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139914263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b04c98cc36b234fb4b862079154d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftPlayerName: Dr. Strange
+  rightPlayerName: Dormammu
+  leftPlayerMaterial: {fileID: 2100000, guid: b2853fe148307dc48893ed7be0aa6a79, type: 2}
+  rightPlayerMaterial: {fileID: 2100000, guid: 053fe98a9e6f8a941886dcf4752af029, type: 2}
 --- !u!1 &364543551
 GameObject:
   m_ObjectHideFlags: 0
@@ -29538,6 +29551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stack_Knight Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1301372615357017458, guid: 03b6c6c522b0ddd44bacf66ccca6d75c, type: 3}
+      propertyPath: leftPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1301372615357017459, guid: 03b6c6c522b0ddd44bacf66ccca6d75c, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -29886,6 +29903,10 @@ PrefabInstance:
     - target: {fileID: 1301372615357017458, guid: 03b6c6c522b0ddd44bacf66ccca6d75c, type: 3}
       propertyPath: unitCount
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301372615357017458, guid: 03b6c6c522b0ddd44bacf66ccca6d75c, type: 3}
+      propertyPath: leftPlayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1301372615357017459, guid: 03b6c6c522b0ddd44bacf66ccca6d75c, type: 3}
       propertyPath: m_RootOrder
@@ -30511,6 +30532,10 @@ PrefabInstance:
     - target: {fileID: 1301372615357017458, guid: 03b6c6c522b0ddd44bacf66ccca6d75c, type: 3}
       propertyPath: unitCount
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301372615357017458, guid: 03b6c6c522b0ddd44bacf66ccca6d75c, type: 3}
+      propertyPath: leftPlayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1301372615357017459, guid: 03b6c6c522b0ddd44bacf66ccca6d75c, type: 3}
       propertyPath: m_RootOrder
@@ -31213,6 +31238,10 @@ PrefabInstance:
     - target: {fileID: 3254762407234765325, guid: 6ca8639a413308049898144ea7b6f8e6, type: 3}
       propertyPath: m_Name
       value: Stack_Archer Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254762407234765360, guid: 6ca8639a413308049898144ea7b6f8e6, type: 3}
+      propertyPath: leftPlayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3254762407234765361, guid: 6ca8639a413308049898144ea7b6f8e6, type: 3}
       propertyPath: m_RootOrder

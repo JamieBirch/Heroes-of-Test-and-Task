@@ -1,33 +1,40 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private GridController _gridController;
+
+    public Canvas GameOverCanvas;
     
-    public Player leftPlayer;
-    public Player rightPlayer;
+    // public Player leftPlayer;
+    // public Player rightPlayer;
+
+    /*public string leftPlayerName;
+    public string rightPlayerName;
+    
+    public Material leftPlayerMaterial;
+    public Material rightPlayerMaterial;*/
 
     // public List<Stack> allStacksOrdered;
-    public Unit currentUnit = null;
-    public Stack currentStack = null;
-    public string unitTag;
+    // public Unit currentUnit = null;
+    // public Stack currentStack = null;
+    // public string unitTag;
     // public int currentRound;
     public bool gameOver = false;
-    public bool endRound = false;
-    public bool endTurn = false;
+    // public bool endRound = false;
+    // public bool endTurn = false;
 
+    private BattleManager _battleManager;
+    
     private void Awake()
     {
         instance = this;
     }
     
     void Start() {
-        _gridController = GridController.instance;
-        // StartGame();
-        // _gridController.highlightInDistanceTiles(currentUnit);
+        _battleManager = BattleManager.instance;
+        
     }
 
     /*private void StartGame()
@@ -64,5 +71,10 @@ public class GameManager : MonoBehaviour
     }*/
 
 
-    
+    public void GameOver()
+    {
+        gameOver = true;
+        
+        throw new System.NotImplementedException();
+    }
 }

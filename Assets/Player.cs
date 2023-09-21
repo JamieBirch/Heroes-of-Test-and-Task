@@ -1,12 +1,23 @@
-﻿public class Player
+﻿using UnityEngine;
+
+public class Player
 {
+    //weird?
+    // public bool leftPlayer;
     public string Name;
+    public Material HighlightMaterial;
 
     private int _stacksAlive = 0;
 
-    public void substractStack()
+    public Player(string name, Material material)
     {
-        _stacksAlive--;
+        this.Name = name;
+        this.HighlightMaterial = material;
+    }
+    
+    public int substractStack()
+    {
+        return _stacksAlive--;
     }
     
     public void setStacks(int count)

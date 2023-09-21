@@ -5,6 +5,9 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance;
+
+    public Player leftPlayer;
+    public Player rightPlayer;
     
     private LinkedList<Stack> allStacksOrdered;
     private int currentRound;
@@ -30,22 +33,28 @@ public class BattleManager : MonoBehaviour
     {
         currentRound = 1;
         allStacksOrdered = OrderStacksByInitiative();
-        activeStack = allStacksOrdered.First;
+        AssignAsActive(allStacksOrdered.First);
+    }
+
+    private void AssignAsActive(LinkedListNode<Stack> linkedListNode)
+    {
+        activeStack = linkedListNode;
         activeStack.Value.turnCube.SetActive(true);
     }
 
     private void SwitchToNextStack()
     {
+        LinkedListNode<Stack> nextActive;
         if (activeStack.Next != null)
         {
-            activeStack = activeStack.Next;
+            nextActive = activeStack.Next;
         }
         else
         {
-            activeStack = allStacksOrdered.First;
+            nextActive = allStacksOrdered.First;
         }
         
-        activeStack.Value.turnCube.SetActive(true);
+        AssignAsActive(nextActive);
     }
     
     public void EndTurn()

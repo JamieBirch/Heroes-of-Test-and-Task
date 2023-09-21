@@ -1446,7 +1446,6 @@ MonoBehaviour:
   initiative: {fileID: 6547507284470924369}
   count: {fileID: 7554589272265176157}
   turnCube: {fileID: 776537941032767609}
-  isActive: 0
   targetTile: {x: 0, y: 0, z: 0}
   targetSet: 0
 --- !u!1 &6547507284981792356
