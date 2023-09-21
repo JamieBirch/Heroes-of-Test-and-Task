@@ -9,4 +9,10 @@ public class Knight : Unit
 
         return 0;
     }
+
+    public override bool EndTurn()
+    {
+        //endlessly or only once???
+        return (Utils.GenerateRandomChance() > 45);
+    }
 }

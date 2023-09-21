@@ -31,4 +31,9 @@ public class Unit : MonoBehaviour
         Vector3 enemyTile = targetStack.GetTile();
         return Utils.WithinDistance(myTile, enemyTile, 2f);
     }
+    
+    public virtual bool EndTurn()
+    {
+        return true;
+    } 
 }

@@ -17,4 +17,10 @@ public static class Utils
         // Debug.Log(distance);
         return distanceBetweenPoints < distance;
     }
+    
+    public static float GenerateRandomChance()
+    {
+        Random random = new Random();
+        return (float)random.NextDouble() * 100;
+    }
 }

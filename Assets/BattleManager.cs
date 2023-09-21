@@ -6,9 +6,6 @@ public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance;
 
-    // public Player leftPlayer;
-    // public Player rightPlayer;
-    
     private LinkedList<Stack> allStacksOrdered;
     private int currentRound;
 
@@ -45,9 +42,6 @@ public class BattleManager : MonoBehaviour
 
     private void SwitchToNextStack()
     {
-        // Debug.Log("Left has " + leftPlayer.GetStacksAlive());
-        // Debug.Log("Right has " + rightPlayer.GetStacksAlive());
-        
         LinkedListNode<Stack> nextActive;
         if (activeStack.Next != null)
         {
@@ -58,16 +52,21 @@ public class BattleManager : MonoBehaviour
             nextActive = allStacksOrdered.First;
         }
         
-        Debug.Log("Player has " + nextActive.Value.Owner.GetStacksAlive());
-
         AssignAsActive(nextActive);
     }
     
     public void EndTurn()
     {
-        
-        activeStack.Value.turnCube.SetActive(false);
-        SwitchToNextStack();
+        if (activeStack.Value.unit.EndTurn())
+        {
+            activeStack.Value.turnCube.SetActive(false);
+            SwitchToNextStack();
+        }
+        else
+        {
+            Debug.Log("Go Again");
+            activeStack.Value.ResetTurnActions();
+        }
     }
     
     private LinkedList<Stack> OrderStacksByInitiative()
