@@ -38,11 +38,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!gameOver && endRound)
+        /*if (!gameOver && endRound)
         {
             Debug.Log("0");
             NextRound();
-        }
+        }*/
     }
 
     private void NextRound()
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             this.currentStack = currentStack;
             currentUnit = currentStack.unit;
             currentStack.isActive = true;
-            StartCoroutine(currentStack.Go());
+            StartCoroutine(currentStack.DoTurn());
         }
 
         endRound = true;

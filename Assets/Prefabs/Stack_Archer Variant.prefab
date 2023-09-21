@@ -9,10 +9,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6547507284552180551, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_Name
-      value: Stack_Archer
+      value: Stack_Archer Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180601, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6fc3902c12849da4eb8de9514aed012b, type: 2}
+    - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
+      propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: 6fc3902c12849da4eb8de9514aed012b, type: 2}
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}

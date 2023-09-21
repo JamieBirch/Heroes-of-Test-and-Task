@@ -13,7 +13,8 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tile hoverTile = null;
     private Vector3Int previousMousePos = new Vector3Int();
 
-    private GameManager _gameManager;
+    // private GameManager _gameManager;
+    private BattleManager _battleManager;
     
     private void Awake()
     {
@@ -22,7 +23,8 @@ public class GridController : MonoBehaviour
     
     void Start() {
         grid = gameObject.GetComponent<Grid>();
-        _gameManager = GameManager.instance;
+        // _gameManager = GameManager.instance;
+        _battleManager = BattleManager.instance;
     }
 
     void Update()
@@ -48,8 +50,8 @@ public class GridController : MonoBehaviour
             if (isInDistance(previousMousePos))
             {
                 Vector3 cellCenter = grid.GetCellCenterWorld(previousMousePos);
-                _gameManager.currentUnit.target = new Vector3(cellCenter.x, _gameManager.currentUnit.transform.position.y, cellCenter.z);
-                _gameManager.currentUnit.targetSet = true;
+                _battleManager.GetActiveStack().SetMoveTarget(cellCenter);
+                
                 // _gameManager.currentUnit.Move(cellCenter);
             }
             else
@@ -89,7 +91,7 @@ public class GridController : MonoBehaviour
     private bool isInDistance(Vector3Int vector3Int)
     {
         //TODO
-        int currentUnitMovement = _gameManager.currentUnit.movement;
+        int currentUnitMovement = _battleManager.GetActiveStack().unit.movement;
         Vector3 gridCellSize = grid.cellSize;
         // Debug.Log("cell size " + gridCellSize);
         return true;

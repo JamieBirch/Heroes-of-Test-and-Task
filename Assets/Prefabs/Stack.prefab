@@ -69,7 +69,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 200
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 300
@@ -1345,6 +1345,7 @@ MonoBehaviour:
   unitCount: 0
   info: {fileID: 6547507283430467113}
   count: {fileID: 7554589272265176157}
+  isActive: 0
 --- !u!1 &6547507284981792356
 GameObject:
   m_ObjectHideFlags: 0

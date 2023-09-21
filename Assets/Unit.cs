@@ -12,36 +12,10 @@ public class Unit : MonoBehaviour
     public int dmgRangedMax;
 
     public int speed = 3;
-    public Vector3 target;
-    public bool targetSet;
-
-    void Update()
-    {
-        if (transform.position != target)
-        {
-            Move(target);
-        }
-        else
-        {
-            targetSet = false;
-        }
-    }
     
     public virtual void Attack()
     {
         Debug.Log("Attack");
-    }
-    
-    public virtual void Move(Vector3 targetPosition)
-    {
-        if (targetSet)
-        {
-            // Debug.Log(transform.position);
-            // Debug.Log("move to tile " + targetPosition);
-   
-            float distanceThisFrame = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target, distanceThisFrame);
-        }
     }
     
     public virtual void Skip()
