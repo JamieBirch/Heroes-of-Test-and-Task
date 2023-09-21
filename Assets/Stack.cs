@@ -111,7 +111,7 @@ public class Stack : MonoBehaviour
         targetTile = new Vector3(cellCenter.x, transform.position.y, cellCenter.z);
         Vector3Int positionToCell = _gridController.PositionToCell(targetTile);
 
-        Debug.Log(positionToCell);
+        // Debug.Log(positionToCell);
 
         occupiedTile = positionToCell;
         targetSet = true;
@@ -125,9 +125,11 @@ public class Stack : MonoBehaviour
 
         int damage = unit.Attack(targetStack);
         Debug.Log(damage + " damage");
-
-        targetStack.TakeDamage(damage * unitCount);
-        _attackedOrUsedAbilityThisTurn = true;
+        if (damage > 0)
+        {
+            targetStack.TakeDamage(damage * unitCount);
+            _attackedOrUsedAbilityThisTurn = true;
+        }
         yield return new WaitForSeconds(2f);
     }
 

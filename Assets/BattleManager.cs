@@ -43,7 +43,7 @@ public class BattleManager : MonoBehaviour
         //TODO
         // Debug.Log("Attack");
 
-        Attack(enemy);
+        // Attack(enemy);
         yield return new WaitForSeconds(2f);
     }
 
@@ -67,5 +67,12 @@ public class BattleManager : MonoBehaviour
         {
             activeStack = friend;
         }
+    }
+    
+    public void EndTurn()
+    {
+        activeStack.isActive = false;
+        Debug.Log(activeStack.unit + "count " + activeStack.unitCount + " finished its turn");
+        SwitchActiveStack();
     }
 }

@@ -63,10 +63,6 @@ public class GameManager : MonoBehaviour
         return stacksOrdered;
     }
 
-    public void EndTurn()
-    {
-        currentStack.isActive = false;
-        Debug.Log(currentStack.unit + "count " + currentStack.unitCount + " finished its turn");
-    }
+
     
 }
