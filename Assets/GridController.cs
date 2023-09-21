@@ -11,6 +11,8 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap interactiveMap = null;
     [SerializeField] private Tile defaultTile = null;
     [SerializeField] private Tile hoverTile = null;
+    [SerializeField] private Tile availableTile = null;
+    [SerializeField] private Tile unavailableTile = null;
     private Vector3Int previousMousePos = new Vector3Int();
 
     // private GameManager _gameManager;
@@ -65,8 +67,6 @@ public class GridController : MonoBehaviour
             {
                 Vector3 cellCenter = grid.GetCellCenterWorld(previousMousePos);
                 _battleManager.GetActiveStack().SetMoveTarget(cellCenter);
-                
-                // _gameManager.currentUnit.Move(cellCenter);
             }
             else
             {
@@ -86,7 +86,22 @@ public class GridController : MonoBehaviour
     private void highlight(Vector3Int worldToCell)
     {
         // Debug.Log(worldToCell);
-        interactiveMap.SetTile(worldToCell, hoverTile);
+        Stack activeStack = _battleManager.GetActiveStack();
+        int unitMovement = activeStack.unit.movement;
+        Vector3Int tile = activeStack.GetTile();
+        if (withinReach(worldToCell, tile, unitMovement))
+        {
+            interactiveMap.SetTile(worldToCell, availableTile);
+        }
+        else
+        {
+            interactiveMap.SetTile(worldToCell, unavailableTile);
+        }
+    }
+
+    private bool withinReach(Vector3Int tile1, Vector3Int tile2, int unitMovement)
+    {
+        return Utils.WithinDistance(tile1, tile2, unitMovement + 1);
     }
 
     public void highlightInDistanceTiles(Unit unit)

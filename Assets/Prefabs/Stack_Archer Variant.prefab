@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbeca85e55805e43af2c6bc200a5729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Archer
   health: 10
   movement: 6
   initiative: 6

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public string name;
+    
     public int health;
     public int movement;
     public int initiative;

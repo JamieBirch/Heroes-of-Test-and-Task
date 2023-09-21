@@ -31531,6 +31531,8 @@ MonoBehaviour:
   interactiveMap: {fileID: 364543554}
   defaultTile: {fileID: 11400000, guid: 3e6ef0fee6f80e4439c1423493d97dfa, type: 2}
   hoverTile: {fileID: 11400000, guid: b00378b92cbfec244b33510d0eff6377, type: 2}
+  availableTile: {fileID: 11400000, guid: de068b1e05e737143929c12b364d5719, type: 2}
+  unavailableTile: {fileID: 11400000, guid: 8ffee8ae8b26f1849951c16b075f48b8, type: 2}
 --- !u!1 &1844179104
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ public class Stack : MonoBehaviour
     void Start()
     {
         //UI
-        name.text = gameObject.name;
+        name.text = unit.name;
         health.text = unit.health.ToString();
         movement.text = unit.movement.ToString();
         initiative.text = unit.initiative.ToString();
@@ -163,6 +163,8 @@ public class Stack : MonoBehaviour
 
             unitCount = totalHealth / unit.health;
             Debug.Log("updated unit count after hit: " + unitCount);
+            
+            unit.TakeDamage();
         }
         else
         {
@@ -195,7 +197,7 @@ public class Stack : MonoBehaviour
         _movedThisTurn = false;
     }
 
-    public Vector3 GetTile()
+    public Vector3Int GetTile()
     {
         return occupiedTile;
     }

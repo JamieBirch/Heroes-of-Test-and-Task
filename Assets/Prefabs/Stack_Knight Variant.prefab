@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95184cfe8e1c8564382b3c2c0dc89767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Knight
   health: 20
   movement: 5
   initiative: 4
