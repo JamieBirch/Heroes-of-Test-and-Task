@@ -44,6 +44,8 @@ public class Stack : MonoBehaviour
         Vector3Int positionToCell = _gridController.PositionToCell(pos);
         // Debug.Log(positionToCell);
         occupiedTile = positionToCell;
+
+        totalHealth = unitCount * unit.health;
     }
 
     void Update()
@@ -62,19 +64,17 @@ public class Stack : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        // Debug.Log("mouse enter");
         info.enabled = true;
     }
     
     private void OnMouseExit()
     {
-        // Debug.Log("mouse exit");
         info.enabled = false;
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("pressed on " + unit + "count " + unitCount);
+        // Debug.Log("pressed on " + unit + "count " + unitCount);
         
         Stack activeStack = _battleManager.GetActiveStack();
 
@@ -135,8 +135,25 @@ public class Stack : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
+        if (totalHealth > damage)
+        {
+            Debug.Log("total health before hit: " + totalHealth);
+            totalHealth -= damage;
+            Debug.Log("total health after hit: " + totalHealth);
+
+            unitCount = totalHealth / unit.health;
+            Debug.Log("updated unit count after hit: " + unitCount);
+        }
+        else
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
         //TODO
-        Debug.Log("took " + damage + " damage");
+        Debug.Log("destroyed");
     }
 
     public void ResetTurnActions()
