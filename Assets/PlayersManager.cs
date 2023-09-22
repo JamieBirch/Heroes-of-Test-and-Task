@@ -29,4 +29,9 @@ public class PlayersManager : MonoBehaviour
     {
         return rightPlayer;
     }
+
+    public Player GetOtherPlayer(Player player)
+    {
+        return player == leftPlayer ? rightPlayer : leftPlayer;
+    }
 }

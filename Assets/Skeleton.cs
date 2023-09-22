@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Skeleton : Unit
 {
     public bool isInMotherStack;
@@ -7,10 +9,13 @@ public class Skeleton : Unit
         //Can they attack from distance???
         if (IsClose(targetStack))
         {
-            return Utils.RandomIntBetween(dmgMeleeMin, dmgMeleeMax);
+            return dmgMeleeMax;
         }
-
-        return 0;
+        else
+        {
+            Debug.Log("Target is too far");
+            return 0;
+        }
     }
 
     public override void TakeDamage()

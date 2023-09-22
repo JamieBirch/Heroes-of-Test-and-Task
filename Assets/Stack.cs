@@ -9,6 +9,7 @@ public class Stack : MonoBehaviour
     private int totalHealth;
     
     public bool leftPlayer;
+    public bool isControlled;
     public Player Owner;
     
     public Canvas info;
@@ -65,17 +66,25 @@ public class Stack : MonoBehaviour
 
     private void AssignPlayer()
     {
+        Player owner;
         if (leftPlayer)
         {
-            Owner = PlayersManager.instance.GetLeftPlayer();
+            owner = PlayersManager.instance.GetLeftPlayer();
         }
         else
         {
-            Owner = PlayersManager.instance.GetRightPlayer();
+            owner = PlayersManager.instance.GetRightPlayer();
         }
 
-        Owner.addStack();
-        turnCubeRenderer.material = Owner.HighlightMaterial;
+        owner.addStack();
+
+        AssignOwner(owner);
+    }
+
+    private void AssignOwner(Player owner)
+    {
+        Owner = owner;
+        turnCubeRenderer.material = owner.HighlightMaterial;
     }
 
     void Update()
@@ -159,8 +168,8 @@ public class Stack : MonoBehaviour
             int totalDamage = damage * unitCount;
             Debug.Log("total damage: " + totalDamage);
             targetStack.TakeDamage(totalDamage);
-            _attackedOrUsedAbilityThisTurn = true;
         }
+        _attackedOrUsedAbilityThisTurn = true;
         yield return new WaitForSeconds(2f);
     }
 
@@ -216,5 +225,11 @@ public class Stack : MonoBehaviour
     public bool CanMove()
     {
         return !_movedThisTurn;
+    }
+
+    public void ChangeOwner()
+    {
+        Player newOwner = PlayersManager.instance.GetOtherPlayer(Owner);
+        AssignOwner(newOwner);
     }
 }

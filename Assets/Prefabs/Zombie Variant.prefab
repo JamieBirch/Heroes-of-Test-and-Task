@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5247270057046003208
+--- !u!1001 &8352115420806192211
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -225,23 +225,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180551, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_Name
-      value: Stack_Knight Variant
+      value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180601, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b638f48ca6907ff4989f672d55b31e7f, type: 2}
+      objectReference: {fileID: 2100000, guid: 366d99f1f6657d744aa7c2ac3dc11fc2, type: 2}
     - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: unit
       value: 
-      objectReference: {fileID: 3371635356779876408}
-    - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
-      propertyPath: material
-      value: 
-      objectReference: {fileID: 2100000, guid: b638f48ca6907ff4989f672d55b31e7f, type: 2}
+      objectReference: {fileID: 100137162}
     - target: {fileID: 6547507284552180602, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: unitCount
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_RootOrder
@@ -286,26 +282,6 @@ PrefabInstance:
     - target: {fileID: 6547507284552180603, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6547507284552180605, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6547507284552180605, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
-      propertyPath: movement
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6547507284552180605, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
-      propertyPath: initiative
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6547507284552180605, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
-      propertyPath: dmgMeleeMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6547507284552180605, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
-      propertyPath: dmgMeleeMin
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6547507284981792359, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -358,29 +334,29 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6547507284552180605, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
---- !u!1 &1301372615357017423 stripped
+--- !u!1 &2969498977054293780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6547507284552180551, guid: aabb7265c72a8634caf12714a94367b7, type: 3}
-  m_PrefabInstance: {fileID: 5247270057046003208}
+  m_PrefabInstance: {fileID: 8352115420806192211}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3371635356779876408
+--- !u!114 &100137162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1301372615357017423}
+  m_GameObject: {fileID: 2969498977054293780}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95184cfe8e1c8564382b3c2c0dc89767, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ae426e9508bd514f9c4632df986a7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Knight
-  health: 20
-  movement: 5
+  name: Zombie
+  health: 3000
+  movement: 2
   initiative: 4
-  dmgMeleeMin: 6
-  dmgMeleeMax: 10
+  dmgMeleeMin: 0
+  dmgMeleeMax: 0
   dmgRangedMin: 0
   dmgRangedMax: 0
   speed: 3

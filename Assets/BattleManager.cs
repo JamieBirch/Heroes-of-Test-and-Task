@@ -64,6 +64,11 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
+            if (activeStack.Value.isControlled)
+            {
+                activeStack.Value.isControlled = false;
+                activeStack.Value.ChangeOwner();
+            }
             Debug.Log("Go Again");
             activeStack.Value.ResetTurnActions();
         }
