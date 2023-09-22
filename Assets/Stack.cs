@@ -81,7 +81,7 @@ public class Stack : MonoBehaviour
         AssignOwner(owner);
     }
 
-    private void AssignOwner(Player owner)
+    public void AssignOwner(Player owner)
     {
         Owner = owner;
         turnCubeRenderer.material = owner.HighlightMaterial;
@@ -160,9 +160,6 @@ public class Stack : MonoBehaviour
 
     public IEnumerator Attack(Stack targetStack)
     {
-        // Debug.Log("attack an enemy");
-        //Damage
-
         int damage = unit.Attack(targetStack);
         if (damage > 0)
         {
@@ -232,5 +229,10 @@ public class Stack : MonoBehaviour
     {
         Player newOwner = PlayersManager.instance.GetOtherPlayer(Owner);
         AssignOwner(newOwner);
+    }
+    
+    public Vector3 GetWorldCoordinates(Vector3 nearbyTile)
+    {
+        return _gridController.CellToWorld(Vector3Int.FloorToInt(nearbyTile));
     }
 }

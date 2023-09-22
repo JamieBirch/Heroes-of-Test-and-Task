@@ -18,6 +18,20 @@ public static class Utils
         return distanceBetweenPoints < distance;
     }
     
+    public static Vector3[] FindNearbyTiles(Vector3 a)
+    {
+        return new[]
+        {
+            new Vector3(a.x - 1, a.y - 1, a.z),
+            new Vector3(a.x - 1, a.y + 1, a.z),
+            new Vector3(a.x - 1, a.y, a.z),
+            new Vector3(a.x, a.y - 1, a.z),
+            new Vector3(a.x, a.y + 1, a.z),
+            new Vector3(a.x, a.y, a.z),
+        };
+    }
+    
+    
     public static float GenerateRandomChance()
     {
         Random random = new Random();
