@@ -14,7 +14,8 @@ public class Stack : MonoBehaviour
     
     public Canvas info;
     public Text name;
-    public Text health;
+    public Text healthUnit;
+    public Text healthTotal;
     public Text movement;
     public Text initiative;
     public Text count;
@@ -38,9 +39,12 @@ public class Stack : MonoBehaviour
 
     void Start()
     {
+        totalHealth = unitCount * unit.health;
+        
         //UI
         name.text = unit.name;
-        health.text = unit.health.ToString();
+        healthUnit.text = unit.health.ToString();
+        healthTotal.text = totalHealth.ToString();
         movement.text = unit.movement.ToString();
         initiative.text = unit.initiative.ToString();
         info.enabled = false;
@@ -50,11 +54,7 @@ public class Stack : MonoBehaviour
         _gameManager = GameManager.instance;
 
         AssignOccupiedTile();
-
-        totalHealth = unitCount * unit.health;
-
         AssignPlayer();
-        //TODO assign turnCube material
     }
 
     private void AssignOccupiedTile()
@@ -90,6 +90,7 @@ public class Stack : MonoBehaviour
     void Update()
     {
         count.text = unitCount.ToString();
+        healthTotal.text = totalHealth.ToString();
         
         if (targetSet && transform.position != targetTile)
         {
@@ -184,7 +185,7 @@ public class Stack : MonoBehaviour
             unitCount = totalHealth / unit.health;
             Debug.Log("updated unit count after hit: " + unitCount);
             
-            unit.TakeDamage();
+            unit.TakeDamage(damage);
         }
         else
         {

@@ -18,7 +18,7 @@ public class Skeleton : Unit
         }
     }
 
-    public override void TakeDamage()
+    public override void TakeDamage(int damage)
     {
         //TODO
     }

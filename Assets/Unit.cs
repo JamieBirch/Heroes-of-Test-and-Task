@@ -20,7 +20,7 @@ public class Unit : MonoBehaviour
         return 0;
     }
 
-    public virtual void TakeDamage()
+    public virtual void TakeDamage(int damage)
     {
         
     }
